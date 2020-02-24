@@ -1,2 +1,8 @@
 # r_visualization
-A portfolio of my code of data visualization with R
+
+Hello human and cactus!
+
+I love puffy plumpy fluffy animals and I am a basic R user.
+I am learning Finnish very hard!
+
+Kukkuluuruu!
