@@ -1,0 +1,48 @@
+#this code gives you an example to describe the curve of a fucntion
+#(1) how to write a piecewise-defined function
+#(2) how to visualize the function and set up the range of x
+#(3) how to add element to the graph
+#   (3.1) add segment (e.g. for threshold)
+#   (3.2) high light a point
+#   (3.3) add text in the graph
+
+library(ggplot2)
+
+#define the function f(x)1 and f(x)2
+f01 <- function(x)
+	ifelse(x<=1,(x*90*1.2+15)*1.05,
+		ifelse(x>1 & x<=10, (x*70*1.2+40)*1.05,
+			ifelse(x>10 & x<=50, (x*25*1.2+160)*1.05,
+				ifelse(x>50 & x<=400, (x*19.8*1.2+160)*1.05,(x*13*1.2+240)*1.05))))
+        
+f02 <- function(x)
+	ifelse(x<=1,(x*90*1.2+25)*1.05,
+		ifelse(x>1 & x<=10, (x*70*1.2+80)*1.05,
+			ifelse(x>10 & x<=50, (x*25*1.2+320)*1.05,
+				ifelse(x>50 & x<=400, (x*19.8*1.2+320)*1.05,(x*13*1.2+480)*1.05))))
+        
+        
+#set up the the range of x, (0,450)
+p <- ggplot(data.frame(x=c(0,450)),aes(x))+
+		stat_function(fun=f01, geom = "path", aes(color = "Function 1"), size=1)+
+		stat_function(fun=f02, geom = "path", aes(color = "Function 2"), size=1)+
+		ggtitle(label="Curve of 2 Functions",
+			subtitle="Piecewise-defined function, x value of interval: 1, 10, 50 and 400")+
+		xlab(label="x value")+
+		ylab(label="y value")+
+		scale_x_continuous(breaks=seq(0,450,50))+          #set the x axis as percentage 
+		scale_y_continuous(breaks=seq(0,11000,1000))+
+		scale_colour_manual("Legend:", values = c("red", "blue"))+
+		theme(legend.position="bottom")+
+
+#add segment for the x value of interval 
+    annotate("segment", x=0, xend=0, y =0, yend =11000, colour ="#FF66CC", size=0.05)+
+		annotate("segment", x=1, xend=1, y =0, yend =11000, colour ="#FF66CC", size=0.05)+
+		annotate("segment", x=10, xend=10, y =0, yend =11000, colour ="#FF66CC", size=0.05)+
+		annotate("segment", x=50, xend=50, y =0, yend =11000, colour ="#FF66CC", size=0.05)+
+		annotate("segment", x=400, xend=400, y =0, yend =11000, colour ="#FF66CC", size=0.05)+
+
+#highlight a point in the function, and add texts nearby 
+    geom_point(data=data.frame(x=50,y=1415.4),aes(x,y),color="red",size=1.3)+
+    annotate(geom="text",x=75,y=1000, label="(50,1415.4)", color="red",size=3.5)
+
