@@ -1,0 +1,13 @@
+#this code give an example of clustered column barplot with the palette of Wes Anserson
+
+library(ggplot2)
+library(wesanderson)
+
+#set up a data frame
+category <- c('In Price List', 'In Price List', 'Not in Price List', 'Not in Price List')
+item_amount <- c(10, 20, 15, 5)
+group <- c('before pricing', 'after pricing', 'before pricing', 'after pricing')
+data <- data.frame(category, item_amount, group)
+
+
+#
