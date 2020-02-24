@@ -2,7 +2,7 @@
 
 Hello human and cactus!
 
-I love puffy plumpy fluffy animals and I am a basic R user.
+I love puffy plumpy fluffy animals and I am a R user.
 I am learning Finnish very hard!
 
 Kukkuluuruu!
