@@ -7,7 +7,16 @@ library(wesanderson)
 category <- c('In Price List', 'In Price List', 'Not in Price List', 'Not in Price List')
 item_amount <- c(10, 20, 15, 5)
 group <- c('before pricing', 'after pricing', 'before pricing', 'after pricing')
-data <- data.frame(category, item_amount, group)
+table <- data.frame(category, item_amount, group)
 
-
-#
+#produce the culustered column barplot
+p <- ggplot(data = table,aes(x=category,y=item_amount,fill=group))+ 
+  geom_bar(stat = "identity",position = position_dodge())+
+	labs(fill="Amount of items:")+
+	geom_text(aes(label=item_amount), position=position_dodge(width=0.9), vjust=-0.25, size=3) +
+	ggtitle(label="Statistics on Items in/out Price List")+
+	theme(axis.title.x=element_blank(),
+	  axis.title.y=element_blank(),
+	  legend.position="bottom",
+	  plot.title=element_text(size=10, face="bold", hjust=0))+
+	scale_fill_manual(values=wes_palette(n=2, name="GrandBudapest2"))
