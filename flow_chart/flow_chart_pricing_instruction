@@ -1,0 +1,36 @@
+#package "DiagrammeR"
+library(DiagrammeR)
+grViz("digraph flowchart {
+      # node definitions with substituted label text
+      node [fontname = Helvetica, shape = rectangle]        
+      tab1 [label = 'Search the item in *OT-Outotec HQ*']
+      tab2 [label = 'Item appears']
+      tab3 [label = 'Item does not appear']
+      tab4 [label = 'Whether the code is correct?']
+      tab5 [label = 'Yes']
+      tab6 [label = 'No']
+      tab7 [label = 'Correct the code']
+      tab8 [label = 'Consult pricing team to import the item']
+      tab9 [label = 'Family=F370203? Rate Group=37002?']
+      tab10 [label = 'Yes']
+      tab11 [label = 'No']
+      tab12 [label = 'Let:Family=F370203, Rate Group=37002']
+      tab13 [label = 'Fill attributes:Revision Factor, Weight, Length, Lining Material, Cost']
+      tab14 [label = '(Target Price automatically calculated) Click *Set Target Price to Valid Price*']
+      tab15 [label = 'Select: *Price correction*=yes, *IncludeInPirceList Central*=yes; Fill:*Price Change reason*=MM/YY Item added to PL. Pricing logic']
+
+  # edge definitions with the node IDs
+      tab1 -> tab2;
+      tab1 -> tab3;
+      tab3 -> tab4;
+      tab4 -> tab5;
+      tab4 -> tab6;
+      tab6 -> tab7 -> tab2 -> tab9;
+      tab5 -> tab8;
+      tab9 -> tab10 -> tab13;
+      tab9 -> tab11 -> tab12 -> tab13;
+      tab13 -> tab14 -> tab15
+
+      }
+     	
+      ")
