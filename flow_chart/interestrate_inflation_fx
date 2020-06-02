@@ -1,0 +1,22 @@
+#package "DiagrammeR"
+library(DiagrammeR)
+grViz("digraph flowchart {
+      # node definitions with substituted label text
+      node [fontname = Helvetica, shape = rectangle]        
+      tab1 [label = 'Low interest rate (-)', shape = ellipse, style = filled, fillcolor = Linen]
+      tab2 [label = 'Domestic consumption (+)\nDomestic saving (-)']
+      tab3 [label = 'Economic growth']
+      tab4 [label = 'Inflation rate increases (+)', shape = ellipse, style = filled, fillcolor = Linen]
+      tab5 [label = 'Weaker currency']
+      tab6 [label = 'Not attractive to foreign investors']
+      tab7 [label = 'Less demand for the currency']
+      tab8 [label = 'FX decreases (-)', shape = ellipse, style = filled, fillcolor = Linen]
+
+  # edge definitions with the node IDs
+      tab1 -> tab2 -> tab3 -> tab4 -> tab5;
+      tab1 -> tab6 -> tab7 -> tab8;
+      tab5 -> tab8
+
+      }
+     	
+      ")
